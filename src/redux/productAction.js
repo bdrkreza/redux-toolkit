@@ -1,5 +1,13 @@
 import ProductService from "../services/productService";
-import { setError, setProducts, setStatus, STATUS } from "./productSlice";
+import {
+  addProduct,
+  deleteProduct,
+  setError,
+  setProducts,
+  setStatus,
+  STATUS,
+  updateProduct,
+} from "./productSlice";
 
 export const fetchProducts = () => {
   return (dispatch) => {
@@ -11,6 +19,49 @@ export const fetchProducts = () => {
       })
       .catch((err) => {
         dispatch(setError(err));
+        dispatch(setStatus(STATUS.ERROR));
+      });
+  };
+};
+
+export const createProduct = (body) => {
+  return (dispatch) => {
+    dispatch(setStatus(STATUS.PENDING));
+    ProductService.addProduct(body)
+      .then((data) => {
+        dispatch(addProduct(data));
+        dispatch(setStatus(STATUS.SUCCESS));
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(setStatus(STATUS.ERROR));
+      });
+  };
+};
+
+export const UpdateProduct = (id, body) => {
+  return (dispatch) => {
+    dispatch(setStatus(STATUS.PENDING));
+    ProductService.updateProduct(id, body)
+      .then((data) => {
+        dispatch(updateProduct(data));
+        dispatch(setStatus(STATUS.SUCCESS));
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(setStatus(STATUS.ERROR));
+      });
+  };
+};
+export const DeleteProduct = (id) => {
+  return (dispatch) => {
+    ProductService.deleteProduct(id)
+      .then((data) => {
+        dispatch(deleteProduct(data));
+        dispatch(setStatus(STATUS.SUCCESS));
+      })
+      .catch((err) => {
+        console.log(err);
         dispatch(setStatus(STATUS.ERROR));
       });
   };

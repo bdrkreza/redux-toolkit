@@ -26,9 +26,35 @@ const productSlice = createSlice({
     setError: (state, action) => {
       state.isError = action.payload;
     },
+    addProduct: (state, action) => {
+      state.data.push(action.payload);
+    },
+    updateProduct: (state, action) => {
+      const { id, title, description, price, category, image } = action.payload;
+      let isProduct = state.data.filter((product) => product.id === id);
+      if (isProduct) {
+        isProduct[0].title = title;
+        isProduct[0].image = image;
+        isProduct[0].description = description;
+        isProduct[0].price = price;
+        isProduct[0].category = category;
+      }
+    },
+    deleteProduct: (state, action) => {
+      state.data = state.data.filter(
+        (product) => product.id !== action.payload.id
+      );
+    },
   },
 });
 
-export const { setProducts, setStatus, setError } = productSlice.actions;
+export const {
+  setProducts,
+  setStatus,
+  setError,
+  addProduct,
+  updateProduct,
+  deleteProduct,
+} = productSlice.actions;
 
 export default productSlice.reducer;

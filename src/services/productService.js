@@ -10,15 +10,15 @@ class ProductService {
   }
 
   addProduct(body) {
-    return requests.post(`/product/`, body);
+    return requests.post(`/products`, body);
   }
 
   updateProduct(id, body) {
-    return requests.post(`/product/${id}`, body);
+    return requests.put(`/products/${id}`, body);
   }
 
   deleteProduct(id) {
-    return requests.delete(`/product/${id}`);
+    return requests.delete(`/products/${id}`);
   }
 }
 
