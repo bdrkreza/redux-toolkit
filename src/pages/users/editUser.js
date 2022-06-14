@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { updateUser } from "../redux/userSlice";
+import { updateUser } from "../../redux/userSlice";
 import "./addUser.scss";
 
 export default function EditUser() {
