@@ -1,0 +1,137 @@
+/* form starting stylings ------------------------------- */
+.add_content {
+  background: #fff;
+  width: 400px;
+  max-width: 100%;
+  box-sizing: border-box;
+  padding: 25px;
+  margin: 8% auto 0;
+  position: relative;
+  z-index: 1;
+  border-radius: 10px;
+  border-top: 5px solid #5264ae;
+  border-left: 1px solid #5264ae;
+
+  -webkit-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  -moz-box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+  .group {
+    position: relative;
+    margin-bottom: 45px;
+  }
+  input {
+    font-size: 18px;
+    padding: 10px 10px 10px 5px;
+    display: block;
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid #757575;
+  }
+  &:focus {
+    outline: none;
+  }
+  label {
+    color: #999;
+    font-size: 18px;
+    font-weight: normal;
+    position: absolute;
+    pointer-events: none;
+    left: 5px;
+    top: 10px;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+
+  input:focus ~ label,
+  input:valid ~ label {
+    top: -15px;
+    font-size: 14px;
+    color: #5264ae;
+  }
+  .bar {
+    position: relative;
+    display: block;
+    width: 100%;
+    &::after {
+      right: 50%;
+    }
+    &::before {
+      left: 50%;
+    }
+  }
+
+  .bar:before,
+  .bar:after {
+    content: "";
+    height: 2px;
+    top: 0px;
+    width: 0;
+    bottom: 1px;
+    position: absolute;
+    background: #5264ae;
+    transition: 0.2s ease all;
+    -moz-transition: 0.2s ease all;
+    -webkit-transition: 0.2s ease all;
+  }
+
+  input:focus ~ .highlight {
+    -webkit-animation: inputHighlighter 0.3s ease;
+    -moz-animation: inputHighlighter 0.3s ease;
+    animation: inputHighlighter 0.3s ease;
+  }
+  input:focus ~ .bar:before,
+  input:focus ~ .bar:after {
+    width: 50%;
+  }
+  .highlight {
+    position: absolute;
+    height: 60%;
+    width: 100px;
+    top: 0%;
+    left: 0;
+    pointer-events: none;
+    opacity: 0.5;
+  }
+  .submit {
+    cursor: pointer;
+    display: flex;
+    margin-left: auto;
+    padding: 10px 30px;
+    font-size: large;
+    background-color: #40b9b9;
+    border-radius: 1px;
+  }
+  a {
+    font-size: large;
+  }
+}
+
+/* ANIMATIONS ================ */
+@-webkit-keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@-moz-keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}
+@keyframes inputHighlighter {
+  from {
+    background: #5264ae;
+  }
+  to {
+    width: 0;
+    background: transparent;
+  }
+}

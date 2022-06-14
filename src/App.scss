@@ -1,0 +1,112 @@
+* {
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
+  text-decoration: none;
+  list-style-type: none;
+  outline: none;
+}
+body {
+  background-color: rgb(231, 231, 226);
+}
+nav {
+  background-color: rgb(235, 155, 155);
+  height: 5vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem;
+}
+.nav-link {
+  color: black;
+  margin: 0 1rem 0 0;
+  transition: all 0.3s;
+}
+.nav-link:hover {
+  color: white;
+}
+
+main {
+  min-height: 90vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  flex-wrap: wrap;
+  gap: 20px 20px;
+  .card_wrapper {
+    min-width: 300px;
+    max-width: 365px;
+    background: #fff;
+    border: 1px solid #fca311;
+    padding: 25px 25px 30px 25px;
+    border-radius: 15px;
+    box-shadow: 1px 7px 1px -5px rgba(0, 0, 0, 0.15);
+    text-align: center;
+    img {
+      max-width: 90px;
+    }
+    header {
+      font-size: 25px;
+      font-weight: 600;
+    }
+    .content {
+      margin-top: 10px;
+      p {
+        text-align: justify;
+        color: #858585;
+        margin: 5px 0 20px 0;
+        span {
+          font-size: large;
+          color: #212529;
+          font-weight: 100;
+          font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        }
+      }
+      .buttons {
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+        .delete {
+          padding: 4px 8px;
+          border: none;
+          outline: none;
+          color: #212529;
+          border-radius: 5px;
+          background: #fcba7f;
+          cursor: pointer;
+          transition: all 0.3s ease;
+          &:hover {
+            transform: scale(0.97);
+          }
+          svg {
+            font-size: 40px;
+          }
+        }
+        a {
+          text-decoration: none;
+          padding: 4px 8px;
+          border-radius: 5px;
+          color: #212529;
+          background: #e9ecef;
+          svg {
+            font-size: 40px;
+          }
+        }
+        .edit {
+          background-color: aquamarine;
+        }
+        .delete {
+          background-color: rgba(168, 65, 65, 0.671);
+          svg {
+            color: rgb(182, 63, 63);
+          }
+        }
+      }
+    }
+  }
+}
