@@ -1,11 +1,10 @@
-import React from "react";
 import { FiEdit } from "react-icons/fi";
 import { MdAddBox } from "react-icons/md";
 import { RiDeleteBack2Line } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
-import logo from "../assets/avatar.svg";
-import { deleteUser } from "../redux/userSlice";
+import logo from "../../assets/avatar.svg";
+import { deleteUser } from "../../redux/userSlice";
 
 export default function UserView() {
   const dispatch = useDispatch();

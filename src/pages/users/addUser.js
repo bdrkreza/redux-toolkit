@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useNavigate } from "react-router-dom";
-import { addUser } from "../redux/userSlice";
+import { addUser } from "../../redux/userSlice";
 import "./addUser.scss";
 
 const initialState = {
