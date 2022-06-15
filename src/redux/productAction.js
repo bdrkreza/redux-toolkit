@@ -2,6 +2,7 @@ import ProductService from "../services/productService";
 import {
   addProduct,
   deleteProduct,
+  filterProduct,
   setError,
   setProducts,
   setStatus,
@@ -53,12 +54,26 @@ export const UpdateProduct = (id, body) => {
       });
   };
 };
+
 export const DeleteProduct = (id) => {
   return (dispatch) => {
     ProductService.deleteProduct(id)
       .then((data) => {
         dispatch(deleteProduct(data));
         dispatch(setStatus(STATUS.SUCCESS));
+      })
+      .catch((err) => {
+        console.log(err);
+        dispatch(setStatus(STATUS.ERROR));
+      });
+  };
+};
+
+export const FilterProduct = (category) => {
+  return (dispatch) => {
+    ProductService.getProductByCategory(category)
+      .then((data) => {
+        dispatch(filterProduct(data));
       })
       .catch((err) => {
         console.log(err);

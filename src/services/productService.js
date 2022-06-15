@@ -8,6 +8,9 @@ class ProductService {
   getProductByID(id) {
     return requests.get(`/product/${id}`);
   }
+  getProductByCategory(category) {
+    return requests.get(`/products/category/${category}`);
+  }
 
   addProduct(body) {
     return requests.post(`/products`, body);

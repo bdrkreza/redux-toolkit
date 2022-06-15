@@ -1,11 +1,25 @@
 import { FaSearch } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import "./product.scss";
-export default function TopBar() {
+export default function TopBar({
+  changeSearchTerm,
+  searchTerm,
+  sortOption,
+  setSortItem,
+}) {
+  let array = sortOption.filter(
+    (v, i, a) => a.findIndex((v2) => v2.category === v.category) === i
+  );
+  console.log(array);
   return (
     <div className="topnav">
       <div className="topnav__search">
-        <input type="text" placeholder="Search here..." />
+        <input
+          type="text"
+          onChange={changeSearchTerm}
+          value={searchTerm}
+          placeholder="Search here..."
+        />
         <FaSearch />
       </div>
       <div className="topnav__right">
@@ -14,11 +28,11 @@ export default function TopBar() {
           <div className="row">
             <div className="selectdiv">
               <label>
-                <select>
+                <select onClick={(e) => setSortItem(e.target.value)}>
                   <option selected> Sorted By </option>
-                  <option>Option 1</option>
-                  <option>Option 2</option>
-                  <option>Last long option</option>
+                  {array.map((item) => (
+                    <option>{item.category}</option>
+                  ))}
                 </select>
               </label>
             </div>

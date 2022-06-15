@@ -96,7 +96,7 @@ export default function AddProduct() {
           <label>Image</label>
         </div>
 
-        <Link className="btn_cancel" to="/show_user">
+        <Link className="btn_cancel" to="/product">
           cancel
         </Link>
         <button className="submit" type="submit">

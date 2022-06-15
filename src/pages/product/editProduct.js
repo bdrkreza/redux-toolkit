@@ -93,7 +93,7 @@ export default function EditProduct() {
           <label>Image</label>
         </div>
 
-        <Link className="btn_cancel" to="/">
+        <Link className="btn_cancel" to="/product">
           cancel
         </Link>
         <button className="submit" type="submit">

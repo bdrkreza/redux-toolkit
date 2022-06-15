@@ -9,6 +9,7 @@ export const STATUS = Object.freeze({
 
 const initialState = {
   data: [],
+  filteredProducts: [],
   status: STATUS.IDLE,
   isError: null,
 };
@@ -19,6 +20,17 @@ const productSlice = createSlice({
   reducers: {
     setProducts: (state, action) => {
       state.data = action.payload;
+      state.filteredProducts = action.payload;
+    },
+    searchByName: (state, action) => {
+      const filteredProducts = state.filteredProducts.filter((product) =>
+        product.title.toLowerCase().includes(action.payload.toLowerCase())
+      );
+      return {
+        ...state,
+        filteredProducts:
+          action.payload.length > 0 ? filteredProducts : [...state.data],
+      };
     },
     setStatus: (state, action) => {
       state.status = action.payload;
@@ -27,11 +39,18 @@ const productSlice = createSlice({
       state.isError = action.payload;
     },
     addProduct: (state, action) => {
-      state.data.push(action.payload);
+      state.filteredProducts.push(action.payload);
+    },
+    filterProduct: (state, action) => {
+      state.filteredProducts = state.filteredProducts.filter(
+        (category) => category.category === action.payload.category
+      );
     },
     updateProduct: (state, action) => {
       const { id, title, description, price, category, image } = action.payload;
-      let isProduct = state.data.filter((product) => product.id === id);
+      let isProduct = state.filteredProducts.filter(
+        (product) => product.id === id
+      );
       if (isProduct) {
         isProduct[0].title = title;
         isProduct[0].image = image;
@@ -41,7 +60,7 @@ const productSlice = createSlice({
       }
     },
     deleteProduct: (state, action) => {
-      state.data = state.data.filter(
+      state.filteredProducts = state.filteredProducts.filter(
         (product) => product.id !== action.payload.id
       );
     },
@@ -55,6 +74,8 @@ export const {
   addProduct,
   updateProduct,
   deleteProduct,
+  searchByName,
+  filterProduct,
 } = productSlice.actions;
 
 export default productSlice.reducer;
